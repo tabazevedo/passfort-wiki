@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider as StoreProvider } from 'react-redux';
+import { Provider as StyletronEngine } from 'styletron-react';
+import { Client as Styletron } from 'styletron-engine-atomic';
 
 import './style/global.css';
 import createStore from './redux/createStore';
@@ -13,7 +15,9 @@ const store = window.devToolsExtension
 
 const Application = (
   <StoreProvider store={store}>
-    <App />
+    <StyletronEngine value={new Styletron()}>
+      <App />
+    </StyletronEngine>
   </StoreProvider>
 )
 
