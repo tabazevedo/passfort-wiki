@@ -11,3 +11,10 @@ export const documentRevisions = state => {
   const title = documentTitle(state);
   return get(['revisionsByDocument', title], state);
 }
+
+export const documentRevisionData = state => {
+  const title = documentTitle(state);
+  const revision = documentRevision(state);
+
+  return get(['revisionDataByDocument', title, revision], state);
+}

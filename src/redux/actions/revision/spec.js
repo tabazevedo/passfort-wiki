@@ -34,7 +34,7 @@ describe('actions/revision', () => {
       expect(dispatch.mock.calls.length).toBe(2)
       expect(dispatch.mock.calls[0][0]).toEqual(pending());
       expect(dispatch.mock.calls[1][0]).toEqual(
-        success({ document: { data: 'body' }, title: 'TITLE', revision: 'REVISION' })
+        success({ document: 'body', title: 'TITLE', revision: 'REVISION' })
       );
 
       api.done();
@@ -59,7 +59,7 @@ describe('actions/revision', () => {
       expect(dispatch.mock.calls.length).toBe(2)
       expect(dispatch.mock.calls[0][0]).toEqual(pending());
       expect(dispatch.mock.calls[1][0]).toEqual(
-        success({ document: { data: 'body' }, title: '123', revision: 'latest' })
+        success({ document: 'body', title: '123', revision: 'latest' })
       );
 
       api.done();

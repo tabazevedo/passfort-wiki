@@ -9,7 +9,6 @@ import {
 } from '../../redux/selectors';
 
 export function RevisionList({ title, revisions }) {
-  console.log(revisions);
   const revisionLinks = revisions.map(revision => (
     <li key={revision}>
       <Link to={{ type: 'route:document-revision', payload: { title, revision }}}>

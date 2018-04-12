@@ -23,7 +23,7 @@ export const fetchThunk = async (dispatch, getState) => {
     const revision = selectDocumentRevision(state);
 
     const doc = await fetchDocument(title, revision);
-    dispatch(success({ document: doc, title, revision }));
+    dispatch(success({ document: doc.data, title, revision }));
   } catch(e) {
     dispatch(failed(e));
   }

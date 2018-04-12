@@ -6,7 +6,6 @@ import { Client as Styletron } from 'styletron-engine-atomic';
 import createHistory from 'history/createBrowserHistory';
 
 import createStore from './redux/createStore';
-import registerServiceWorker from './registerServiceWorker';
 
 import './style/global.css';
 import Page from './components/Page';
@@ -28,4 +27,3 @@ const Application = (
 )
 
 ReactDOM.render(Application, document.getElementById('root'));
-registerServiceWorker();

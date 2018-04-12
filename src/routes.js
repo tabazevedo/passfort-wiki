@@ -1,5 +1,11 @@
 import { fetch as fetchDocuments } from './redux/actions/documents';
 import { fetch as fetchRevisions } from './redux/actions/revisions';
+import { fetch as fetchCurrentRevision } from './redux/actions/revision';
+
+const fetchDocumentData = async (dispatch, getState) => {
+  await fetchRevisions()(dispatch, getState);
+  await fetchCurrentRevision()(dispatch, getState);
+}
 
 export default {
   'route:documents': {
@@ -8,9 +14,10 @@ export default {
   },
   'route:document': {
     path: '/documents/:title',
-    thunk: fetchRevisions()
+    thunk: fetchDocumentData
   },
   'route:document-revision': {
-    path: '/documents/:title/:revision'
+    path: '/documents/:title/:revision',
+    thunk: fetchDocumentData
   }
 };
