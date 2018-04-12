@@ -2,8 +2,13 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Link from 'redux-first-router-link';
 import PropTypes from 'prop-types';
+import { styled } from 'styletron-react';
 
 import { documents as selectDocuments } from '../../redux/selectors';
+
+const ListHeader = styled('span', {
+  fontWeight: 'bold'
+});
 
 export function DocumentList({ documents }) {
   const docLinks = documents.map(title => (
@@ -15,9 +20,12 @@ export function DocumentList({ documents }) {
   ));
 
   return (
-    <ul>
-      {docLinks}
-    </ul>
+    <div>
+      <ListHeader>available documents:</ListHeader>
+      <ul>
+        {docLinks}
+      </ul>
+    </div>
   );
 };
 

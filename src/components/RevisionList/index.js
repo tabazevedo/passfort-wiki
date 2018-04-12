@@ -2,11 +2,16 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Link from 'redux-first-router-link';
 import PropTypes from 'prop-types';
+import { styled } from 'styletron-react';
 
 import {
   documentRevisions as selectRevisions,
   documentTitle as selectDocumentTitle
 } from '../../redux/selectors';
+
+const ListHeader = styled('span', {
+  fontWeight: 'bold'
+});
 
 export function RevisionList({ title, revisions }) {
   const revisionLinks = revisions.map(revision => (
@@ -18,9 +23,12 @@ export function RevisionList({ title, revisions }) {
   ));
 
   return (
-    <ul>
-      {revisionLinks}
-    </ul>
+    <div>
+      <ListHeader>available revisions:</ListHeader>
+      <ul>
+        {revisionLinks}
+      </ul>
+    </div>
   );
 };
 
