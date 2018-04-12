@@ -51,14 +51,6 @@ describe('requests', () => {
   });
 
   describe('fetch document request', () => {
-    it('fetches latest revision if not provided', async () => {
-      api.get('/page/doc/latest').reply(200, { document: true });
-      const json = await document('doc');
-
-      expect(json).toEqual({ document: true });
-      api.done();
-    });
-
     it('fetches provided revision', async () => {
       api.get('/page/doc/123456').reply(200, { document: true });
       const json = await document('doc', 123456);

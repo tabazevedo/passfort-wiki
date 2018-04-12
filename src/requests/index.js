@@ -26,7 +26,5 @@ export const request = async (endpoint) => {
 export const documents = () => request(DOCUMENTS);
 export const revisions = (docId) => request(url(DOCUMENT, String(docId)));
 
-export const document = (docId, revision) => {
-  const rev = revision ? revision : 'latest';
-  return request(url(DOCUMENT, String(docId), String(rev)));
-}
+export const document = (docId, revision) =>
+  request(url(DOCUMENT, String(docId), String(revision)));
