@@ -3,7 +3,7 @@ import { FETCH_FAILED, fetchThunk, pending, success } from './index';
 import { API_ENDPOINT } from '../../../config';
 import url from 'url';
 
-describe('actions/documents', () => {
+describe('actions/revision', () => {
   describe('fetch', () => {
     let api;
 
@@ -16,7 +16,7 @@ describe('actions/documents', () => {
       nock.restore();
     });
 
-    it('uses title and revision based on location state', async () => {
+    it('fetches with title and revision based on location state', async () => {
       const dispatch = jest.fn();
       const getState = () => ({
         location: {
@@ -33,7 +33,9 @@ describe('actions/documents', () => {
 
       expect(dispatch.mock.calls.length).toBe(2)
       expect(dispatch.mock.calls[0][0]).toEqual(pending());
-      expect(dispatch.mock.calls[1][0]).toEqual(success({ data: 'body' }));
+      expect(dispatch.mock.calls[1][0]).toEqual(
+        success({ document: { data: 'body' }, title: 'TITLE', revision: 'REVISION' })
+      );
 
       api.done();
     });
@@ -56,7 +58,9 @@ describe('actions/documents', () => {
 
       expect(dispatch.mock.calls.length).toBe(2)
       expect(dispatch.mock.calls[0][0]).toEqual(pending());
-      expect(dispatch.mock.calls[1][0]).toEqual(success({ data: 'body' }));
+      expect(dispatch.mock.calls[1][0]).toEqual(
+        success({ document: { data: 'body' }, title: '123', revision: 'latest' })
+      );
 
       api.done();
     });

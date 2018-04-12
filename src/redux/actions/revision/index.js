@@ -8,9 +8,9 @@ import {
 
 // Action type constants
 
-export const FETCH_FAILED = 'fetch-document:failed';
-export const FETCH_PENDING = 'fetch-document:pending';
-export const FETCH_SUCCESS = 'fetch-document:success';
+export const FETCH_FAILED = 'fetch-revision:failed';
+export const FETCH_PENDING = 'fetch-revision:pending';
+export const FETCH_SUCCESS = 'fetch-revision:success';
 
 // Data fetching thunk, seperated for testability
 
@@ -23,7 +23,7 @@ export const fetchThunk = async (dispatch, getState) => {
     const revision = selectDocumentRevision(state);
 
     const doc = await fetchDocument(title, revision);
-    dispatch(success(doc));
+    dispatch(success({ document: doc, title, revision }));
   } catch(e) {
     dispatch(failed(e));
   }
