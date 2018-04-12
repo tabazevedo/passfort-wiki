@@ -14,7 +14,9 @@
     "redux-first-router-link": "^1.4.2",
     "reset-css": "^3.0.0",
     "styletron-engine-atomic": "^1.0.4",
-    "styletron-react": "^4.0.3"
+    "styletron-react": "^4.0.3",
+    "universal-fetch": "^1.0.0",
+    "url-join": "^4.0.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -24,6 +26,7 @@
   },
   "devDependencies": {
     "enzyme": "^3.3.0",
-    "enzyme-adapter-react-16": "^1.1.1"
+    "enzyme-adapter-react-16": "^1.1.1",
+    "nock": "^9.2.5"
   }
 }
