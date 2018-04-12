@@ -1,4 +1,5 @@
 import { fetch as fetchDocuments } from './redux/actions/documents';
+import { fetch as fetchRevisions } from './redux/actions/revisions';
 
 export default {
   'route:documents': {
@@ -6,7 +7,8 @@ export default {
     thunk: fetchDocuments()
   },
   'route:document': {
-    path: '/documents/:title'
+    path: '/documents/:title',
+    thunk: fetchRevisions()
   },
   'route:document-revision': {
     path: '/documents/:title/:revision'
