@@ -4,7 +4,7 @@ import { fetch as fetchCurrentRevision } from './redux/actions/revision';
 
 const fetchDocumentData = async (dispatch, getState) => {
   await fetchRevisions()(dispatch, getState);
-  await fetchCurrentRevision()(dispatch, getState);
+  return await fetchCurrentRevision()(dispatch, getState);
 }
 
 export default {
