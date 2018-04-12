@@ -1,10 +1,27 @@
-import { compose, createStore } from 'redux';
+import { applyMiddleware, combineReducers, compose, createStore } from 'redux';
+import { connectRoutes } from 'redux-first-router';
 
-const reducer = s => s;
+import reducers from './reducers';
+import routes from '../routes';
 
-export default (...additionalMiddleware) => {
+export default (history, ...additionalMiddleware) => {
+  const {
+    reducer: routingReducer,
+    middleware: routingMiddleware,
+    enhancer: routingEnhancer
+  } = connectRoutes(history, routes);
+
+  const rootReducer = combineReducers({
+    location: routingReducer,
+    ...reducers
+  });
+
   return createStore(
-    reducer,
-    compose(...additionalMiddleware)
+    rootReducer,
+    compose(
+      routingEnhancer,
+      applyMiddleware(routingMiddleware),
+      ...additionalMiddleware
+    )
   )
 };

@@ -3,9 +3,9 @@ export default {
     path: '/(documents)?'
   },
   'route:document': {
-    path: '/documents/:id(/latest)?'
+    path: '/documents/:name'
   },
   'route:document-revision': {
-    path: '/documents/:id/:revision'
+    path: '/documents/:name/:revision'
   }
 };
