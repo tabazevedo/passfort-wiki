@@ -6,9 +6,9 @@ export default {
     thunk: fetchDocuments()
   },
   'route:document': {
-    path: '/documents/:name'
+    path: '/documents/:title'
   },
   'route:document-revision': {
-    path: '/documents/:name/:revision'
+    path: '/documents/:title/:revision'
   }
 };
