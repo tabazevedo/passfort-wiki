@@ -10,11 +10,12 @@ import {
 } from '../../redux/selectors';
 
 export function Revision({ revision, body }) {
+  const md = body ? <ReactMarkdown source={body} /> : null;
   return (
     <div>
       <h2>viewing revision: {revision}</h2>
       <main>
-        <ReactMarkdown source={body} />
+        {md}
       </main>
     </div>
   );
@@ -22,7 +23,7 @@ export function Revision({ revision, body }) {
 
 Revision.propTypes = {
   revision: PropTypes.node.isRequired,
-  body: PropTypes.string.isRequired
+  body: PropTypes.string
 }
 
 export const mapStateToProps = state => ({
